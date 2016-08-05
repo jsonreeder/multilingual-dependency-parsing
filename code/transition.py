@@ -22,6 +22,10 @@ class Transition(object):
         # Precondition: "wi" not already the dependent of another word
         # TODO: Add if statement for precondition
 
+        # Add to arcs
+
+        # Remove from stack
+
         raise NotImplementedError('Please implement left_arc!')
         return -1
 
@@ -63,5 +67,11 @@ class Transition(object):
             :param configuration: is the current configuration
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
-        raise NotImplementedError('Please implement shift!')
-        return -1
+
+        # Precondition: Neither the stack nor the buffer are empty
+        if not conf.buffer or not conf.stack:
+            return -1
+
+        # Word at the top of the buffer moved to the stack
+        idx_wj = conf.buffer.pop(0)
+        conf.stack.append(idx_wj)
