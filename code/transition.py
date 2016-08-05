@@ -18,6 +18,10 @@ class Transition(object):
             :param configuration: is the current configuration
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
+
+        # Precondition: "wi" not already the dependent of another word
+        # TODO: Add if statement for precondition
+
         raise NotImplementedError('Please implement left_arc!')
         return -1
 
@@ -27,6 +31,8 @@ class Transition(object):
             :param configuration: is the current configuration
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
+
+        # Precondition: Neither the stack nor the buffer are empty
         if not conf.buffer or not conf.stack:
             return -1
 
@@ -44,6 +50,10 @@ class Transition(object):
             :param configuration: is the current configuration
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
+
+        # Precondition: Word must be the dependent of another word
+        # TODO: Add if statement for precondition
+
         raise NotImplementedError('Please implement reduce!')
         return -1
 
