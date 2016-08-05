@@ -20,10 +20,12 @@ class Transition(object):
         """
 
         # Precondition: Neither the stack nor the buffer are empty
+        # NOTE: This precondition is necessary
         if not conf.buffer or not conf.stack:
             return -1
 
         # Precondition: "wj" not already the dependent of another word
+        # TODO: This precondition is not doing anything
         elif conf.stack[-1] in [dep[2] for dep in conf.arcs]:
             return -1
 
@@ -60,8 +62,9 @@ class Transition(object):
         """
 
         # Precondition: Neither the stack nor the buffer are empty
-        if not conf.buffer or not conf.stack:
-            return -1
+        # NOTE: This precondition does not seem to be necessary
+        # if not conf.buffer or not conf.stack:
+        #     return -1
 
         # Precondition: Word must be the dependent of another word
         if conf.stack[-1] not in [dep[2] for dep in conf.arcs]:
@@ -79,8 +82,9 @@ class Transition(object):
         """
 
         # Precondition: The buffer is not empty
-        if not conf.buffer:
-            return -1
+        # NOTE: This precondition does not seem to be necessary
+        # if not conf.buffer:
+        #     return -1
 
         # Word at the top of the buffer moved to the stack
         idx_wj = conf.buffer.pop(0)
