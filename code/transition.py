@@ -73,8 +73,8 @@ class Transition(object):
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
 
-        # Precondition: The buffer is not empty
-        if not conf.buffer:
+        # Precondition: Neither the stack nor the buffer are empty
+        if not conf.buffer or not conf.stack:
             return -1
 
         # Word at the top of the buffer moved to the stack
