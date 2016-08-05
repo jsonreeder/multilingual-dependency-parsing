@@ -27,11 +27,10 @@ class Transition(object):
         elif conf.stack[-1] in [dep[2] for dep in conf.arcs]:
             return -1
 
-        idx_wi = conf.stack.pop(0)
+        idx_wi = conf.stack.pop()
         idx_wj = conf.buffer.pop(0)
 
         # Add to arcs
-        conf.stack.append(idx_wj)
         conf.arcs.append((idx_wj, relation, idx_wi))
 
     @staticmethod
