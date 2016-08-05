@@ -60,11 +60,17 @@ class Transition(object):
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
 
-        # Precondition: Word must be the dependent of another word
-        # TODO: Add if statement for precondition
+        # Precondition: Neither the stack nor the buffer are empty
+        if not conf.buffer or not conf.stack:
+            return -1
 
-        raise NotImplementedError('Please implement reduce!')
-        return -1
+        # Precondition: Word must be the dependent of another word
+        if conf.stack[-1] not in [dep[2] for dep in conf.arcs]:
+            return -1
+
+        idx_wi = conf.stack[-1]
+
+        conf.stack.remove(idx_wi)
 
     @staticmethod
     def shift(conf):
