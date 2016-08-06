@@ -34,11 +34,13 @@ class Transition(object):
         elif conf.stack[-1] == 0:
             return -1
 
-        idx_wi = conf.stack.pop()
-        idx_wj = conf.buffer.pop(0)
+        # Parent
+        idx_wj = conf.stack.pop()
+        # Child
+        idx_wi = conf.buffer.pop(0)
 
         # Add to arcs
-        conf.arcs.append((idx_wj, relation, idx_wi))
+        conf.arcs.append((idx_wi, relation, idx_wj))
 
     @staticmethod
     def right_arc(conf, relation):
@@ -51,12 +53,14 @@ class Transition(object):
         if not conf.buffer or not conf.stack:
             return -1
 
-        # You get this one for free! Use it as an example.
-
+        # Parent
         idx_wi = conf.stack[-1]
+        # Child
         idx_wj = conf.buffer.pop(0)
 
+        # Push b onto stack
         conf.stack.append(idx_wj)
+        # Add to arcs
         conf.arcs.append((idx_wi, relation, idx_wj))
 
     @staticmethod
