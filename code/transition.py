@@ -19,27 +19,17 @@ class Transition(object):
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
 
-        # Precondition: Neither the stack nor the buffer are empty
-        # NOTE: This precondition is necessary
+        # Precondition: Neither the stack nor the buffer may be empty
         if not conf.buffer or not conf.stack:
             return -1
 
-        # Precondition: "wj" not already the dependent of another word
-        # TODO: This precondition is not doing anything
-        # elif conf.stack[-1] in [dep[2] for dep in conf.arcs]:
-        #     return -1
-
-        # Precondition: "wj" not the root
-        # TODO: This precondition is not doing anything
-        elif conf.stack[-1] == 0:
+        # Precondition: Word on top of stack must not be the root (0)
+        elif not conf.stack[-1]:
             return -1
 
-        # Parent
         idx_wi = conf.buffer[0]
-        # Child
         idx_wj = conf.stack.pop()
 
-        # Add to arcs
         conf.arcs.append((idx_wi, relation, idx_wj))
 
     @staticmethod
