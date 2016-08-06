@@ -39,18 +39,14 @@ class Transition(object):
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
 
-        # Precondition: Neither the stack nor the buffer are empty
+        # Precondition: Neither the stack nor the buffer are may be empty
         if not conf.buffer or not conf.stack:
             return -1
 
-        # Parent
         idx_wi = conf.stack[-1]
-        # Child
         idx_wj = conf.buffer.pop(0)
 
-        # Push b onto stack
         conf.stack.append(idx_wj)
-        # Add to arcs
         conf.arcs.append((idx_wi, relation, idx_wj))
 
     @staticmethod
