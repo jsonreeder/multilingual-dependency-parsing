@@ -56,12 +56,7 @@ class Transition(object):
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
 
-        # Precondition: Neither the stack nor the buffer are empty
-        # NOTE: This precondition does not seem to be necessary
-        # if not conf.buffer or not conf.stack:
-        #     return -1
-
-        # Precondition: Fail if top of stack not the dependent of another word
+        # Precondition: Word on top of stack must be the dependent of another word
         if conf.stack[-1] not in [dep[2] for dep in conf.arcs]:
             return -1
 
