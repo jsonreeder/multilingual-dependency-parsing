@@ -35,9 +35,9 @@ class Transition(object):
             return -1
 
         # Parent
-        idx_wj = conf.stack.pop()
+        idx_wi = conf.buffer[0]
         # Child
-        idx_wi = conf.buffer.pop(0)
+        idx_wj = conf.stack.pop()
 
         # Add to arcs
         conf.arcs.append((idx_wi, relation, idx_wj))
@@ -94,5 +94,5 @@ class Transition(object):
         #     return -1
 
         # Word at the top of the buffer moved to the stack
-        idx_wj = conf.buffer.pop(0)
-        conf.stack.append(idx_wj)
+        top_buffer = conf.buffer.pop(0)
+        conf.stack.append(top_buffer)
