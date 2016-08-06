@@ -15,6 +15,8 @@ class Transition(object):
     @staticmethod
     def left_arc(conf, relation):
         """
+        Add dependency arc (b,l,s), pop stack
+
             :param configuration: is the current configuration
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
@@ -35,6 +37,8 @@ class Transition(object):
     @staticmethod
     def right_arc(conf, relation):
         """
+        Add depeendency arc (s,l,b), push b onto stack
+
             :param configuration: is the current configuration
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
@@ -52,6 +56,8 @@ class Transition(object):
     @staticmethod
     def reduce(conf):
         """
+        Pop the stack
+
             :param configuration: is the current configuration
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
@@ -65,6 +71,8 @@ class Transition(object):
     @staticmethod
     def shift(conf):
         """
+        Push b onto stack
+
             :param configuration: is the current configuration
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
