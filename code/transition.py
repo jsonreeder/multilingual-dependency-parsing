@@ -69,11 +69,5 @@ class Transition(object):
             :return : A new configuration or -1 if the pre-condition is not satisfied
         """
 
-        # Precondition: The buffer is not empty
-        # NOTE: This precondition does not seem to be necessary
-        # if not conf.buffer:
-        #     return -1
-
-        # Word at the top of the buffer moved to the stack
         top_buffer = conf.buffer.pop(0)
         conf.stack.append(top_buffer)
