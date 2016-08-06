@@ -26,7 +26,12 @@ class Transition(object):
 
         # Precondition: "wj" not already the dependent of another word
         # TODO: This precondition is not doing anything
-        elif conf.stack[-1] in [dep[2] for dep in conf.arcs]:
+        # elif conf.stack[-1] in [dep[2] for dep in conf.arcs]:
+        #     return -1
+
+        # Precondition: "wj" not the root
+        # TODO: This precondition is not doing anything
+        elif conf.stack[-1] == 0:
             return -1
 
         idx_wi = conf.stack.pop()
