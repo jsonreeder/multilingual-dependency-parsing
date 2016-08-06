@@ -1,0 +1,12 @@
+#+TITLE: Multilingual Dependency Parsing
+* Introduction
+This project is my implementation of an arc-eager transition-based dependency parser based on the Joakim Nivre's Malt Parser. The assignment and provided code comes from Professor Dragomir Radev's course Introduction to Natural Language Processing on Coursera.
+* Parser Performance
+** With ~badfeatures.model~
+In the initial step of this project, I implemented the transition parser in ~transition.py~. This allowed the parser to move through the proper configurations necessary to parse data.
+
+The model provided for this stage, ~badfeatures.model~, returned the following scores:
+- UAS: 0.229635530771
+- LAS: 0.125672176857
+
+As indicated by the name, the ~badfeatures~ model was intended as a baseline to demonstrate an inferior feature extractor.
