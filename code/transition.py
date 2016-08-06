@@ -75,13 +75,11 @@ class Transition(object):
         # if not conf.buffer or not conf.stack:
         #     return -1
 
-        # Precondition: Word must be the dependent of another word
+        # Precondition: Fail if top of stack not the dependent of another word
         if conf.stack[-1] not in [dep[2] for dep in conf.arcs]:
             return -1
 
-        idx_wi = conf.stack[-1]
-
-        conf.stack.remove(idx_wi)
+        conf.stack.pop()
 
     @staticmethod
     def shift(conf):
