@@ -5,7 +5,7 @@ This project is my implementation of an arc-eager transition-based dependency pa
 ** With ~badfeatures.model~
 In the initial step of this project, I implemented the transition parser in ~transition.py~. This allowed the parser to move through the proper configurations necessary to parse data.
 
-The model provided for this stage, ~badfeatures.model~, returned the following scores:
+The model provided for this stage, ~badfeatures.model~, was trained on 200 random sentences of the Swedish data. When evaluated against the Swedish test corpush it returned the following scores:
 - UAS: 0.229635530771
 - LAS: 0.125672176857
 
