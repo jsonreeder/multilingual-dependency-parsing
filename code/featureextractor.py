@@ -70,6 +70,7 @@ class FeatureExtractor(object):
         if stack:
             stack_idx0 = stack[-1]
             token = tokens[stack_idx0]
+            # dependents = [a[2] for a in arcs if a[0] == token]
             if FeatureExtractor._check_informative(token['word'], True):
                 result.append('STK_0_FORM_' + token['word'])
 
@@ -100,6 +101,11 @@ class FeatureExtractor(object):
             # if "address" in token and FeatureExtractor._check_informative(token["address"]):
             #     result.append("STK_0_ID_" + str(token["address"]))
 
+            # Dependents
+            # if dependents:
+            #     for dependent in dependents:
+            #         result.append("STK_0_DEPENDENT_" + dependent)
+
         # Tag 1
         if len(stack) > 1:
             stack_idx1 = stack[-2]
@@ -110,6 +116,7 @@ class FeatureExtractor(object):
         if buffer:
             buffer_idx0 = buffer[0]
             token = tokens[buffer_idx0]
+            # dependents = [a[2] for a in arcs if a[0] == token]
             if FeatureExtractor._check_informative(token['word'], True):
                 result.append('BUF_0_FORM_' + token['word'])
 
@@ -138,6 +145,11 @@ class FeatureExtractor(object):
             # No effect
             # if "address" in token and FeatureExtractor._check_informative(token["address"]):
             #     result.append("BUF_0_ID_" + str(token["address"]))
+
+            # Dependents
+            # if dependents:
+            #     for dependent in dependents:
+            #         result.append("BUFF_0_DEPENDENT_" + dependent)
 
         # Tag 1
         if len(buffer) > 1:
