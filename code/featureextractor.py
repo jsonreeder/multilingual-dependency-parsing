@@ -90,6 +90,13 @@ class FeatureExtractor(object):
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
                 result.append("STK_0_TAG_" + token["tag"])
 
+        # Tag 1
+        if len(stack) > 1:
+            stack_idx1 = stack[-2]
+            token = tokens[stack_idx1]
+            if FeatureExtractor._check_informative(token["tag"]):
+                result.append("STK_1_TAG_" + token["tag"])
+
         if buffer:
             buffer_idx0 = buffer[0]
             token = tokens[buffer_idx0]
