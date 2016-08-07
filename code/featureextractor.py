@@ -87,9 +87,9 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(dep_right_most):
                 result.append('STK_0_RDEP_' + dep_right_most)
 
-            # Tag
+            # POSTAG Stack 0
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
-                result.append("STK_0_TAG_" + token["tag"])
+                result.append("STK_0_POSTAG_" + token["tag"])
 
             # Coarse Tag
             # Minimal effect
@@ -132,9 +132,9 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(dep_right_most):
                 result.append('BUF_0_RDEP_' + dep_right_most)
 
-            # Tag
+            # POS Buffer 0
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
-                result.append("BUF_0_TAG_" + token["tag"])
+                result.append("BUF_0_POSTAG_" + token["tag"])
 
             # Coarse Tag
             # Minimal effect
@@ -152,29 +152,32 @@ class FeatureExtractor(object):
             #         result.append("BUFF_0_DEPENDENT_" + dependent)
 
         # Tag 1
-        if len(buffer) > 1:
-            buffer_idx1 = buffer[1]
-            token = tokens[buffer_idx1]
-            if FeatureExtractor._check_informative(token["tag"]):
-                result.append("BUF_1_TAG_" + token["tag"])
+        # TODO: Useful, reimplement
+        # if len(buffer) > 1:
+        #     buffer_idx1 = buffer[1]
+        #     token = tokens[buffer_idx1]
+        #     if FeatureExtractor._check_informative(token["tag"]):
+        #         result.append("BUF_1_TAG_" + token["tag"])
 
         # Tag 2
-        if len(buffer) > 2:
-            buffer_idx2 = buffer[2]
-            token = tokens[buffer_idx2]
-            if FeatureExtractor._check_informative(token["tag"]):
-                result.append("BUF_2_TAG_" + token["tag"])
+        # TODO: Useful, reimplement
+        # if len(buffer) > 2:
+        #     buffer_idx2 = buffer[2]
+        #     token = tokens[buffer_idx2]
+        #     if FeatureExtractor._check_informative(token["tag"]):
+        #         result.append("BUF_2_TAG_" + token["tag"])
 
         # Distance
-        if stack and buffer:
-            stack_idx0 = stack[-1]
-            stack_token = tokens[stack_idx0]
-            stack_id = stack_token["address"]
-            buffer_idx0 = buffer[0]
-            buffer_token = tokens[buffer_idx0]
-            buffer_id = buffer_token["address"]
-            distance = buffer_id - stack_id
-            result.append("DISTANCE_" + str(distance))
+        # TODO: Useful, reimplement
+        # if stack and buffer:
+        #     stack_idx0 = stack[-1]
+        #     stack_token = tokens[stack_idx0]
+        #     stack_id = stack_token["address"]
+        #     buffer_idx0 = buffer[0]
+        #     buffer_token = tokens[buffer_idx0]
+        #     buffer_id = buffer_token["address"]
+        #     distance = buffer_id - stack_id
+        #     result.append("DISTANCE_" + str(distance))
 
         # Intervening dependencies
         # Note: Negative effect
