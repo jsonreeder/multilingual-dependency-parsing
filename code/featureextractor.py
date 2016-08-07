@@ -86,6 +86,10 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(dep_right_most):
                 result.append('STK_0_RDEP_' + dep_right_most)
 
+            # Tag
+            if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
+                result.append("STK_0_TAG_" + token["tag"])
+
         if buffer:
             buffer_idx0 = buffer[0]
             token = tokens[buffer_idx0]
@@ -103,5 +107,9 @@ class FeatureExtractor(object):
                 result.append('BUF_0_LDEP_' + dep_left_most)
             if FeatureExtractor._check_informative(dep_right_most):
                 result.append('BUF_0_RDEP_' + dep_right_most)
+
+            # Tag
+            if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
+                result.append("BUF_0_TAG_" + token["tag"])
 
         return result
