@@ -63,7 +63,7 @@ class FeatureExtractor(object):
 
         global printed
         if not printed:
-            print("This is not a very good feature extractor!")
+            # print("This is not a very good feature extractor!")
             printed = True
 
         # an example set of features:
