@@ -165,4 +165,15 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(token["tag"]):
                 result.append("BUF_2_TAG_" + token["tag"])
 
+        # Distance
+        if stack and buffer:
+            stack_idx0 = stack[-1]
+            stack_token = tokens[stack_idx0]
+            stack_id = stack_token["address"]
+            buffer_idx0 = buffer[0]
+            buffer_token = tokens[buffer_idx0]
+            buffer_id = buffer_token["address"]
+            distance = buffer_id - stack_id
+            result.append("DISTANCE_" + str(distance))
+
         return result
