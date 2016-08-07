@@ -126,4 +126,11 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(token["tag"]):
                 result.append("BUF_1_TAG_" + token["tag"])
 
+        # Tag 2
+        if len(buffer) > 2:
+            buffer_idx2 = buffer[2]
+            token = tokens[buffer_idx2]
+            if FeatureExtractor._check_informative(token["tag"]):
+                result.append("BUF_2_TAG_" + token["tag"])
+
         return result
