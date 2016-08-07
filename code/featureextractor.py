@@ -176,4 +176,13 @@ class FeatureExtractor(object):
             distance = buffer_id - stack_id
             result.append("DISTANCE_" + str(distance))
 
+        # Intervening dependencies
+        # Note: Negative effect
+        # if arcs:
+        #     existing_arcs = []
+        #     for (wi, r, wj) in arcs:
+        #         existing_arcs.append(r)
+        #     for arc in set(existing_arcs):
+        #         result.append("EXISTING_ARC_" + arc)
+
         return result
