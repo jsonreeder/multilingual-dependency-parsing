@@ -90,6 +90,16 @@ class FeatureExtractor(object):
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
                 result.append("STK_0_TAG_" + token["tag"])
 
+            # Coarse Tag
+            # Minimal effect
+            # if "ctag" in token and FeatureExtractor._check_informative(token["ctag"]):
+            #     result.append("STK_0_CPOSTAG_" + token["ctag"])
+
+            # ID
+            # No effect
+            # if "address" in token and FeatureExtractor._check_informative(token["address"]):
+            #     result.append("STK_0_ID_" + str(token["address"]))
+
         # Tag 1
         if len(stack) > 1:
             stack_idx1 = stack[-2]
@@ -118,6 +128,16 @@ class FeatureExtractor(object):
             # Tag
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
                 result.append("BUF_0_TAG_" + token["tag"])
+
+            # Coarse Tag
+            # Minimal effect
+            # if "ctag" in token and FeatureExtractor._check_informative(token["ctag"]):
+            #     result.append("BUF_0_CPOSTAG_" + token["ctag"])
+
+            # ID
+            # No effect
+            # if "address" in token and FeatureExtractor._check_informative(token["address"]):
+            #     result.append("BUF_0_ID_" + str(token["address"]))
 
         # Tag 1
         if len(buffer) > 1:
