@@ -88,8 +88,8 @@ class FeatureExtractor(object):
                 result.append('STK_0_RDEP_' + dep_right_most)
 
             # POSTAG Stack 0
-            # if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
-            #     result.append("STK_0_POSTAG_" + token["tag"])
+            if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
+                result.append("STK_0_POSTAG_" + token["tag"])
 
             # Coarse Tag
             # Minimal effect
