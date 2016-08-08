@@ -10,3 +10,52 @@ The model provided for this stage, ~badfeatures.model~, was trained on 200 rando
 - LAS: 0.125672176857
 
 As indicated by the name, the ~badfeatures~ model was intended as a baseline to demonstrate an inferior feature extractor.
+
+Some of the features tested in this model were:
+- LEX Buffer 0
+- LEX Stack 0
+** Adding features
+*** Swedish
+For Swedish, I roughly followed the feature sequence implemented in Nilson and Nugues (2010). I was also inspired by features mentioned by Chris Manning.
+**** POSTAG Buffer 0
+Testing the fine part of speech tag of the first word on the buffer had a very significant effect. The scores increased to the following:
+- UAS: 0.533559051982
+- LAS: 0.393945429197
+
+For implementation, see the section of ~featureextractor.py~ following the comment ~# POSTAG Buffer 0~
+**** POSTAG Stack 0
+Testing the fine part of speech tag of the first word on the stack also had a significant effect. The scores increased to the following:
+- UAS: 0.704043019319
+- LAS: 0.602668791077
+
+For implementation, see the section of ~featureextractor.py~ following the comment ~# POSTAG Stack 0~
+**** POSTAG Buffer 1
+Testing the fine POS tag of the second word on the buffer had a small effect, increasing to the following scores:
+- UAS: 0.749850627365
+- LAS: 0.644891455885
+
+For implementation, see corresponding comment in ~featureextractor.py~, as above.
+**** POSTAG Stack 1
+Testing the fine POS tag of the second word on the stack had a small effect, increasing to the following scores:
+- UAS: 0.774148575981
+- LAS: 0.66421031667
+**** FORM Buffer 1
+Testing the form of the second word on the buffer had a very small effect:
+- UAS: 0.780123481378
+- LAS: 0.667596096395
+**** Distance
+Testing the distance (number of tokens) between the head of the buffer and the last word on the stack had a small effect:
+- UAS: 0.791077474607
+- LAS: 0.681139215296
+**** Dependents
+Finally, testing the dependents of the first token of the buffer had a significant effect:
+- UAS: 0.837482573193
+- LAS: 0.750049790878
+*** Danish
+- Highest sofar
+  - UAS: 0.809780439122
+  - LAS: 0.732135728543
+*** English
+- Highest sofar
+  - UAS: 0.792452830189
+  - LAS: 0.75786163522
