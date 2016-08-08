@@ -52,10 +52,12 @@ Finally, testing the dependents of the first token of the buffer had a significa
 - UAS: 0.837482573193
 - LAS: 0.750049790878
 *** Danish
-- Highest sofar
-  - UAS: 0.809780439122
-  - LAS: 0.732135728543
+**** Based on Swedish
+Given the same features indicated above for Swedish, the model's performance on the Danish data is slightly worse:
+- UAS: 0.819560878244
+- LAS: 0.744710578842
 *** English
-- Highest sofar
-  - UAS: 0.792452830189
-  - LAS: 0.75786163522
+**** Based on Swedish
+Given the same features indicated above for Swedish, the model's performance on the English data is significantly better:
+- UAS: 0.893081761006
+- LAS: 0.858490566038
