@@ -106,12 +106,12 @@ class FeatureExtractor(object):
             #     for dependent in dependents:
             #         result.append("STK_0_DEPENDENT_" + dependent)
 
-        # Tag 1
-        # if len(stack) > 1:
-        #     stack_idx1 = stack[-2]
-        #     token = tokens[stack_idx1]
-        #     if FeatureExtractor._check_informative(token["tag"]):
-        #         result.append("STK_1_TAG_" + token["tag"])
+        # POSTAG Stack 1
+        if len(stack) > 1:
+            stack_idx1 = stack[-2]
+            token = tokens[stack_idx1]
+            if FeatureExtractor._check_informative(token["tag"]):
+                result.append("STK_1_TAG_" + token["tag"])
 
         if buffer:
             buffer_idx0 = buffer[0]
@@ -135,6 +135,12 @@ class FeatureExtractor(object):
             # POSTAG Buffer 0
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
                 result.append("BUF_0_POSTAG_" + token["tag"])
+
+            # FOLLOWING_WORD Buffer 0
+            # TODO: Refactor, this returns a syntax error
+            # following_word = tokens[buffer_idx0 + 1]
+            # if FeatureExtractor._check_informative(following_word['word'], True):
+            #     result.append('BUF_0_FW_' + following_word['word'])
 
             # Coarse Tag
             # Minimal effect
