@@ -151,13 +151,12 @@ class FeatureExtractor(object):
             #     for dependent in dependents:
             #         result.append("BUFF_0_DEPENDENT_" + dependent)
 
-        # Tag 1
-        # TODO: Useful, reimplement
-        # if len(buffer) > 1:
-        #     buffer_idx1 = buffer[1]
-        #     token = tokens[buffer_idx1]
-        #     if FeatureExtractor._check_informative(token["tag"]):
-        #         result.append("BUF_1_TAG_" + token["tag"])
+        # POSTAG Buffer 1
+        if len(buffer) > 1:
+            buffer_idx1 = buffer[1]
+            token = tokens[buffer_idx1]
+            if FeatureExtractor._check_informative(token["tag"]):
+                result.append("BUF_1_TAG_" + token["tag"])
 
         # Tag 2
         # TODO: Useful, reimplement
