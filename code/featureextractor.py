@@ -100,11 +100,6 @@ class FeatureExtractor(object):
             # if "address" in token and FeatureExtractor._check_informative(token["address"]):
             #     result.append("STK_0_ID_" + str(token["address"]))
 
-            # Dependents
-            # if dependents:
-            #     for dependent in dependents:
-            #         result.append("STK_0_DEPENDENT_" + dependent)
-
         # POSTAG Stack 1
         if len(stack) > 1:
             stack_idx1 = stack[-2]
