@@ -47,10 +47,14 @@ Testing the form of the second word on the buffer had a very small effect:
 Testing the distance (number of tokens) between the head of the buffer and the last word on the stack had a small effect:
 - UAS: 0.791077474607
 - LAS: 0.681139215296
-**** Dependents
-Finally, testing the dependents of the first token of the buffer had a significant effect:
+**** Dependents Buffer 0
+Testing the dependents of the first token of the buffer had a significant effect:
 - UAS: 0.837482573193
 - LAS: 0.750049790878
+**** Dependents Stack 0
+Finally, testing the dependents of the first token of the stack had a significant effect:
+- UAS: 0.886476797451
+- LAS: 0.834295956981
 *** Danish
 **** Based on Swedish
 Given the same features indicated above for Swedish, the model's performance on the Danish data is slightly worse:
@@ -61,3 +65,7 @@ Given the same features indicated above for Swedish, the model's performance on 
 Given the same features indicated above for Swedish, the model's performance on the English data is significantly better:
 - UAS: 0.893081761006
 - LAS: 0.858490566038
+
+With second deps
+UAS: 0.930817610063
+LAS: 0.899371069182
