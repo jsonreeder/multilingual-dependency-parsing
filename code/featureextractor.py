@@ -153,7 +153,6 @@ class FeatureExtractor(object):
             #     result.append("BUF_0_ID_" + str(token["address"]))
 
             # DEPS Buffer 0
-            # TODO: Reimplement, useful
             if FeatureExtractor._check_informative(token["deps"], True):
                 for dep in token["deps"]:
                     result.append("BUF_0_DEP_" + dep)
