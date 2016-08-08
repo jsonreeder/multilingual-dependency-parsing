@@ -153,17 +153,18 @@ class FeatureExtractor(object):
             #     result.append("BUF_0_ID_" + str(token["address"]))
 
             # DEPS Buffer 0
-            if FeatureExtractor._check_informative(token["deps"], True):
-                for dep in token["deps"]:
-                    result.append("BUF_0_DEP_" + dep)
+            # TODO: Reimplement, useful
+            # if FeatureExtractor._check_informative(token["deps"], True):
+            #     print token["deps"]
+            #     for dep in token["deps"]:
+            #         result.append("BUF_0_DEP_" + dep)
 
         # POSTAG Buffer 1
-        # TODO: Useful, reimplement
-        # if len(buffer) > 1:
-        #     buffer_idx1 = buffer[1]
-        #     token = tokens[buffer_idx1]
-        #     if FeatureExtractor._check_informative(token["tag"]):
-        #         result.append("BUF_1_TAG_" + token["tag"])
+        if len(buffer) > 1:
+            buffer_idx1 = buffer[1]
+            token = tokens[buffer_idx1]
+            if FeatureExtractor._check_informative(token["tag"]):
+                result.append("BUF_1_TAG_" + token["tag"])
 
         # Tag 2
         # TODO: Useful, reimplement
