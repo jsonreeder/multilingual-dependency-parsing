@@ -1,6 +1,19 @@
 #+TITLE: Multilingual Dependency Parsing
 * Introduction
 This project is my implementation of an arc-eager transition-based dependency parser based on the Joakim Nivre's Malt Parser. The assignment and provided code comes from Professor Dragomir Radev's course Introduction to Natural Language Processing on Coursera.
+
+The parser acheives the following top scores
+- Swedish:
+  - Unlabeled Attachment Score: 0.886476797451
+  - Labeled Attachment Score: 0.834295956981
+- Danish:
+  - UAS: 0.930817610063
+  - LAS: 0.899371069182
+- English:
+  - UAS: 0.933962264151
+  - LAS: 0.911949685535
+
+The arc-eager parser is a simple and elegant parser, able to acheive very high levels of accuracy without relying on any form of search.
 * Parser Performance
 ** With ~badfeatures.model~
 In the initial step of this project, I implemented the transition parser in ~transition.py~. This allowed the parser to move through the proper configurations necessary to parse data.
@@ -55,17 +68,27 @@ Testing the dependents of the first token of the buffer had a significant effect
 Finally, testing the dependents of the first token of the stack had a significant effect:
 - UAS: 0.886476797451
 - LAS: 0.834295956981
+**** ID
+Note that unlike English and Danish, considering the token's ID does /not/ improve the scores for Swedish:
+- UAS: 0.885281816371
+- LAS: 0.830312686716
+  
+See below for English and Danish scores.
 *** Danish
 **** Based on Swedish
-Given the same features indicated above for Swedish, the model's performance on the Danish data is slightly worse:
-- UAS: 0.819560878244
-- LAS: 0.744710578842
+Given the same features indicated above for Swedish, the model's performance on the Danish data is a bit better:
+- UAS: 0.89500998004
+- LAS: 0.858682634731
+**** ID Stack 0
+Unlike Swedish, considering the token's ID slightly improves its scores:
+- UAS: 0.905389221557
+- LAS: 0.867065868263
 *** English
 **** Based on Swedish
 Given the same features indicated above for Swedish, the model's performance on the English data is significantly better:
-- UAS: 0.893081761006
-- LAS: 0.858490566038
-
-With second deps
-UAS: 0.930817610063
-LAS: 0.899371069182
+- UAS: 0.930817610063
+- LAS: 0.899371069182
+**** ID Stack 0
+Unlike Swedish but like Danish, considering the token's ID slightly improves its scores:
+- UAS: 0.933962264151
+- LAS: 0.911949685535
