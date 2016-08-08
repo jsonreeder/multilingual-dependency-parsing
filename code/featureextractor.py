@@ -1,7 +1,5 @@
 from nltk.compat import python_2_unicode_compatible
 
-printed = False
-
 @python_2_unicode_compatible
 class FeatureExtractor(object):
     @staticmethod
@@ -60,13 +58,6 @@ class FeatureExtractor(object):
 
         result = []
 
-
-        global printed
-        if not printed:
-            # print("This is not a very good feature extractor!")
-            printed = True
-
-        # an example set of features:
         if stack:
             stack_idx0 = stack[-1]
             token = tokens[stack_idx0]
@@ -94,11 +85,6 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(token["deps"], True):
                 for dep in token["deps"]:
                     result.append("STK_0_DEP_" + dep)
-
-            # Coarse Tag
-            # Minimal effect
-            # if "ctag" in token and FeatureExtractor._check_informative(token["ctag"]):
-            #     result.append("STK_0_CPOSTAG_" + token["ctag"])
 
             # ID Stack 0
             # Positive effect: English, Danish
@@ -135,22 +121,6 @@ class FeatureExtractor(object):
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
                 result.append("BUF_0_POSTAG_" + token["tag"])
 
-            # FOLLOWING_WORD Buffer 0
-            # TODO: Refactor, this returns a syntax error
-            # following_word = tokens[buffer_idx0 + 1]
-            # if FeatureExtractor._check_informative(following_word['word'], True):
-            #     result.append('BUF_0_FW_' + following_word['word'])
-
-            # Coarse Tag
-            # Minimal effect
-            # if "ctag" in token and FeatureExtractor._check_informative(token["ctag"]):
-            #     result.append("BUF_0_CPOSTAG_" + token["ctag"])
-
-            # ID
-            # No effect
-            # if "address" in token and FeatureExtractor._check_informative(token["address"]):
-            #     result.append("BUF_0_ID_" + str(token["address"]))
-
             # DEPS Buffer 0
             if FeatureExtractor._check_informative(token["deps"], True):
                 for dep in token["deps"]:
@@ -167,14 +137,6 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(token['word'], True):
                 result.append('BUF_1_FORM_' + token['word'])
 
-        # Tag 2
-        # Note: Negative effect
-        # if len(buffer) > 2:
-        #     buffer_idx2 = buffer[2]
-        #     token = tokens[buffer_idx2]
-        #     if FeatureExtractor._check_informative(token["tag"]):
-        #         result.append("BUF_2_TAG_" + token["tag"])
-
         # Distance
         if stack and buffer:
             stack_idx0 = stack[-1]
@@ -185,14 +147,5 @@ class FeatureExtractor(object):
             buffer_id = buffer_token["address"]
             distance = buffer_id - stack_id
             result.append("DISTANCE_" + str(distance))
-
-        # Intervening dependencies
-        # Note: Negative effect
-        # if arcs:
-        #     existing_arcs = []
-        #     for (wi, r, wj) in arcs:
-        #         existing_arcs.append(r)
-        #     for arc in set(existing_arcs):
-        #         result.append("EXISTING_ARC_" + arc)
 
         return result
