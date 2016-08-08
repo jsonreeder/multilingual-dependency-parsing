@@ -171,7 +171,7 @@ class FeatureExtractor(object):
                 result.append('BUF_1_FORM_' + token['word'])
 
         # Tag 2
-        # TODO: Useful, reimplement
+        # Note: Negative effect
         # if len(buffer) > 2:
         #     buffer_idx2 = buffer[2]
         #     token = tokens[buffer_idx2]
@@ -179,16 +179,15 @@ class FeatureExtractor(object):
         #         result.append("BUF_2_TAG_" + token["tag"])
 
         # Distance
-        # TODO: Useful, reimplement
-        # if stack and buffer:
-        #     stack_idx0 = stack[-1]
-        #     stack_token = tokens[stack_idx0]
-        #     stack_id = stack_token["address"]
-        #     buffer_idx0 = buffer[0]
-        #     buffer_token = tokens[buffer_idx0]
-        #     buffer_id = buffer_token["address"]
-        #     distance = buffer_id - stack_id
-        #     result.append("DISTANCE_" + str(distance))
+        if stack and buffer:
+            stack_idx0 = stack[-1]
+            stack_token = tokens[stack_idx0]
+            stack_id = stack_token["address"]
+            buffer_idx0 = buffer[0]
+            buffer_token = tokens[buffer_idx0]
+            buffer_id = buffer_token["address"]
+            distance = buffer_id - stack_id
+            result.append("DISTANCE_" + str(distance))
 
         # Intervening dependencies
         # Note: Negative effect
