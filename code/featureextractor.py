@@ -166,6 +166,10 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(token["tag"]):
                 result.append("BUF_1_TAG_" + token["tag"])
 
+            # FORM Buffer 1
+            if FeatureExtractor._check_informative(token['word'], True):
+                result.append('BUF_1_FORM_' + token['word'])
+
         # Tag 2
         # TODO: Useful, reimplement
         # if len(buffer) > 2:
