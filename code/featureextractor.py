@@ -136,6 +136,12 @@ class FeatureExtractor(object):
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
                 result.append("BUF_0_POSTAG_" + token["tag"])
 
+            # FOLLOWING_WORD Buffer 0
+            # TODO: Refactor, this returns a syntax error
+            # following_word = tokens[buffer_idx0 + 1]
+            # if FeatureExtractor._check_informative(following_word['word'], True):
+            #     result.append('BUF_0_FW_' + following_word['word'])
+
             # Coarse Tag
             # Minimal effect
             # if "ctag" in token and FeatureExtractor._check_informative(token["ctag"]):
@@ -146,10 +152,10 @@ class FeatureExtractor(object):
             # if "address" in token and FeatureExtractor._check_informative(token["address"]):
             #     result.append("BUF_0_ID_" + str(token["address"]))
 
-            # Dependents
-            # if dependents:
-            #     for dependent in dependents:
-            #         result.append("BUFF_0_DEPENDENT_" + dependent)
+            # DEPS Buffer 0
+            if FeatureExtractor._check_informative(token["deps"], True):
+                for dep in token["deps"]:
+                    result.append("BUF_0_DEP_" + dep)
 
         # POSTAG Buffer 1
         if len(buffer) > 1:
