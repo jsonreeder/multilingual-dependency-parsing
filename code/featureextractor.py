@@ -100,10 +100,11 @@ class FeatureExtractor(object):
             # if "ctag" in token and FeatureExtractor._check_informative(token["ctag"]):
             #     result.append("STK_0_CPOSTAG_" + token["ctag"])
 
-            # ID
-            # TODO: Effect on English
-            # if "address" in token and FeatureExtractor._check_informative(token["address"]):
-            #     result.append("STK_0_ID_" + str(token["address"]))
+            # ID Stack 0
+            # Positive effect: English, Danish
+            # Negative effect: Swedish
+            if "address" in token and FeatureExtractor._check_informative(token["address"]):
+                result.append("STK_0_ID_" + str(token["address"]))
 
         # POSTAG Stack 1
         if len(stack) > 1:
