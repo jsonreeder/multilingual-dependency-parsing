@@ -154,10 +154,9 @@ class FeatureExtractor(object):
 
             # DEPS Buffer 0
             # TODO: Reimplement, useful
-            # if FeatureExtractor._check_informative(token["deps"], True):
-            #     print token["deps"]
-            #     for dep in token["deps"]:
-            #         result.append("BUF_0_DEP_" + dep)
+            if FeatureExtractor._check_informative(token["deps"], True):
+                for dep in token["deps"]:
+                    result.append("BUF_0_DEP_" + dep)
 
         # POSTAG Buffer 1
         if len(buffer) > 1:
