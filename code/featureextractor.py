@@ -90,13 +90,18 @@ class FeatureExtractor(object):
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
                 result.append("STK_0_POSTAG_" + token["tag"])
 
+            # DEPS Stack 0
+            if FeatureExtractor._check_informative(token["deps"], True):
+                for dep in token["deps"]:
+                    result.append("STK_0_DEP_" + dep)
+
             # Coarse Tag
             # Minimal effect
             # if "ctag" in token and FeatureExtractor._check_informative(token["ctag"]):
             #     result.append("STK_0_CPOSTAG_" + token["ctag"])
 
             # ID
-            # No effect
+            # TODO: Effect on English
             # if "address" in token and FeatureExtractor._check_informative(token["address"]):
             #     result.append("STK_0_ID_" + str(token["address"]))
 
