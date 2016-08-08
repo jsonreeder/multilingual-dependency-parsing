@@ -88,8 +88,8 @@ class FeatureExtractor(object):
                 result.append('STK_0_RDEP_' + dep_right_most)
 
             # POSTAG Stack 0
-            if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
-                result.append("STK_0_POSTAG_" + token["tag"])
+            # if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
+            #     result.append("STK_0_POSTAG_" + token["tag"])
 
             # Coarse Tag
             # Minimal effect
@@ -107,11 +107,11 @@ class FeatureExtractor(object):
             #         result.append("STK_0_DEPENDENT_" + dependent)
 
         # Tag 1
-        if len(stack) > 1:
-            stack_idx1 = stack[-2]
-            token = tokens[stack_idx1]
-            if FeatureExtractor._check_informative(token["tag"]):
-                result.append("STK_1_TAG_" + token["tag"])
+        # if len(stack) > 1:
+        #     stack_idx1 = stack[-2]
+        #     token = tokens[stack_idx1]
+        #     if FeatureExtractor._check_informative(token["tag"]):
+        #         result.append("STK_1_TAG_" + token["tag"])
 
         if buffer:
             buffer_idx0 = buffer[0]
@@ -132,7 +132,7 @@ class FeatureExtractor(object):
             if FeatureExtractor._check_informative(dep_right_most):
                 result.append('BUF_0_RDEP_' + dep_right_most)
 
-            # POS Buffer 0
+            # POSTAG Buffer 0
             if "tag" in token and FeatureExtractor._check_informative(token["tag"]):
                 result.append("BUF_0_POSTAG_" + token["tag"])
 
